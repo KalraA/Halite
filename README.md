@@ -108,14 +108,14 @@ Favourite Win:
 
 https://halite.io/game.php?replay=ar1487294314-2974319356.hlt
 
-ML 1v1s
+Saddest Loss:
 
-https://halite.io/game.php?replay=ar1487263413-2138886622.hlt
-
-https://halite.io/game.php?replay=ar1487290872-3827664987.hlt
-
-https://halite.io/game.php?replay=ar1487293806-2467046108.hlt
+https://halite.io/game.php?replay=ar1484436241-1054684793.hlt
 
 Power of Non Aggression Pact:
 
-https://halite.io/game.php?replay=ar1487271549-1684906881.hlt
+https://halite.io/game.php?replay=ar1486864008-2165104036.hlt 
+
+Jokes:
+
+https://halite.io/game.php?replay=ar1486948528-785893331.hlt 
