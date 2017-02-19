@@ -4,7 +4,7 @@
 halite.io is an online AI competition, and this bot was a submission. Check it out at halite.io. This bot uses a combination of supervised learning, transfer learning, and reinforcement learning to build the #1 Machine Learning Bot.
 
 ### Results
-This bot recieved the following achievements, even though there were major timeout issues during the finals: #1 Machine Learning Bot, #1 Undergraduate Submission, #12 Overall, #9 Overall w/o extra final timeouts, #1 best language name. (Ok I gave myself that last one). This was also the first and only ML bot in diamond Since November and until I made a post revealing all the secrets of that bot: http://forums.halite.io/t/building-a-good-ml-bot/776 . The following a summary of the final bot, but doesn't include everything. The link above describes the details omitted here. Some things were changed from then. 
+This bot recieved the following achievements, even though there were major timeout issues during the finals: #1 Machine Learning Bot, #1 Undergraduate Submission, #12 Overall, #9 Overall w/o extra final timeouts, #1 best language name. (Ok I gave myself that last one). This was also the  only ML bot in diamond until thew new year. I made a post revealing all the secrets of that bot a while ago: http://forums.halite.io/t/building-a-good-ml-bot/776 . The following a summary of the final bot, but doesn't include everything. The link above describes the details omitted here. Some things were changed from then. 
 
 ### Algorithm/Architecture
 
