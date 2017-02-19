@@ -6,25 +6,6 @@ halite.io is an online AI competition, and this bot was a submission. Check it o
 ### Results
 This bot recieved the following achievements, even though there were major timeout issues during the finals: #1 Machine Learning Bot, #1 Undergraduate Submission, #12 Overall, #9 Overall w/o extra final timeouts, #1 best language name. (Ok I gave myself that last one). This was also the first and only ML bot in diamond Since November and until I made a post revealing all the secrets of that bot: http://forums.halite.io/t/building-a-good-ml-bot/776 . The following a summary of the final bot, but doesn't include everything. The link above describes the details omitted here. Some things were changed from then. 
 
-### Replays
-Here are some of my favourite game replays:
-
-Favourite Win:
-
-https://halite.io/game.php?replay=ar1487294314-2974319356.hlt
-
-ML 1v1s
-
-https://halite.io/game.php?replay=ar1487263413-2138886622.hlt
-
-https://halite.io/game.php?replay=ar1487290872-3827664987.hlt
-
-https://halite.io/game.php?replay=ar1487293806-2467046108.hlt
-
-Power of Non Aggression Pact:
-
-https://halite.io/game.php?replay=ar1487271549-1684906881.hlt
-
 ### Algorithm/Architecture
 
 The algorithm consisted of one feed forward fully convolutional network. In the forward pass, the padding was done by taking the opposite edge and concatenating it on because the map reflects itself:
@@ -67,7 +48,7 @@ This is the supervised learning process:
 
 ##### Data:
 
-The data is all games of erdman v19. Each game was processed to find the moves that erdman made, and a 19x19 block extracted where the input was of the format batchx19x19x4 where the 4 was id==myId, id==enemyId, production/8-1, strength/255-1 (centering around 0). Then to remove bias, each example was flipped in 3 ways creating 4 data points. Rotations were not included because if you look at the maps, the symmetries are created via flips, not rotations, and so adding rotations would force the net to learn something it doesnt have too, and when you only have a small network due to forward pass time constraints, you need to make sure it learns the most it can. The data was also balanced so that there was a 20% split in terms of STILL, NORTH, WEST, SOUTH, EAST moves. A lot of people didn't do this, but I found this leads to better play. Approx 5million datapoints were used
+The data is all games of erdman v19. Each game was processed to find the moves that erdman made, and a 19x19 block extracted where the input was of the format batchx19x19x4 where the 4 was id==myId, id==enemyId, production/8-1, strength/255-1 (centering around 0). Then to remove bias, each example was flipped in 3 ways creating 4 data points. Rotations were not included because if you look at the maps, the symmetries are created via flips, not rotations, and so adding rotations would force the net to learn something it doesnt have too, and when you only have a small network due to forward pass time constraints, you need to make sure it learns the most it can. The data was also balanced so that there was a 20% split in terms of STILL, NORTH, WEST, SOUTH, EAST moves. A lot of people didn't do this, but I found this leads to better play. Approx 5 million datapoints were used
 
 Improvements to make:
 
@@ -93,22 +74,48 @@ So after downloading all the games of myself, I had it load up my previous model
 
 ##### Reward Picking:
 
-So the way it worked, is 1.0 was the positive reward for winning, and -0.1 was the negative reward for losing. Since I was only doing a few iterations, and since anything that was first place was considered a loss, the negative reward was small to stop huge jumps from happening. Then the reward was discounted with a factor of 0.97 from move -1. This was then multiplied into the label, which is equivalent to multiplying the gradient since the derivative of crossentropy loss propogates this multiplication. This was the Implementation of policy gradient learning. RMSProp with 0.0001 step size was used. 
+So the way it worked, is 1.0 was the positive reward for winning, and -0.1 was the negative reward for losing. Since I was only doing a few iterations, and since anything that was not first place was considered a loss, the negative reward was small to stop huge jumps from happening. Then the reward was discounted with a factor of 0.97 from move -1. This was then multiplied into the label, which is equivalent to multiplying the gradient since the derivative of crossentropy loss propogates this multiplication. This was the Implementation of policy gradient learning. RMSProp with 0.0001 step size was used. 
 
 ### Code
 
 Based on ML starter bot
 
 python3:
+
 MyBot.py -> actual bot code
+
 train_bot.py -> training code
+
 convert.py -> takes keras h5 model and extracts weights to json for MyBot
+
 hlt.py -> communications module provided by competition
 
 python2:
+
 get_games.py -> game downloading script
 
 Other:
+
 LANGUAGE -> ai lmao (it's a play on words from ayyy lmao, not AL lmao ...).
+
 erdy.json -> final weights
 
+
+### Replays
+Here are some of my favourite game replays:
+
+Favourite Win:
+
+https://halite.io/game.php?replay=ar1487294314-2974319356.hlt
+
+ML 1v1s
+
+https://halite.io/game.php?replay=ar1487263413-2138886622.hlt
+
+https://halite.io/game.php?replay=ar1487290872-3827664987.hlt
+
+https://halite.io/game.php?replay=ar1487293806-2467046108.hlt
+
+Power of Non Aggression Pact:
+
+https://halite.io/game.php?replay=ar1487271549-1684906881.hlt
